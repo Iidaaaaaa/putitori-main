@@ -10,6 +10,8 @@ app.get("/api/hotpepper", async (req, res) => {
   const apiKey = "458f270ff858e3ad"; // ホットペッパーAPIのキー
   const url = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${apiKey}&lat=${lat}&lng=${lng}&range=${range}&genre=${genre}&count=${count}&format=json`;
 
+
+
   try {
     const response = await axios.get(url);
     res.json(response.data);
@@ -24,4 +26,5 @@ app.get("/api/hotpepper", async (req, res) => {
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`サーバーがポート ${PORT} で起動中...`);
+  console.log(`http://localhost:${PORT}`);
 });

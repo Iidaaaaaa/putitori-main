@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-// Hooksのインポート
-import useAccordion from "@hooks/useAccordion";
+import React from "react";
 // Assetsのインポート
 import UnderVector from "@assets/UnderVector";
 
@@ -9,38 +7,26 @@ const PlanForm = ({
   Icon,
   Vector = <UnderVector />,
   padding = "p-5",
-  Accordion,
-  disableAccordion = false,
+  onClick,
 }) => {
-  const [isAccordionOpen, toggleAccordion] = useAccordion();
-  const [selectedText, setSelectedText] = useState(text);
-
-  const handleSelect = (newText) => {
-    setSelectedText(newText);
-    toggleAccordion();
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
     <div className="mt-[10px] bg-[#ebebeb] rounded-[20px]">
       <div
         className={`flex items-center justify-between ${padding}`}
-        onClick={toggleAccordion}
+        onClick={handleClick}
       >
         <div className="flex items-center">
           {Icon}
-          <p className="ml-2 text-xs">{selectedText}</p>
+          <p className="ml-2 text-xs">{text}</p> {/* textを直接表示 */}
         </div>
         {Vector}
       </div>
-      {!disableAccordion && isAccordionOpen && Accordion && (
-        <div className=" mt-2 p-4 bg-[#ff0000] rounded-2xl">
-          {React.isValidElement(Accordion) &&
-            React.cloneElement(Accordion, {
-              onSelect: handleSelect,
-              selectedValue: selectedText,
-            })}
-        </div>
-      )}
     </div>
   );
 };
