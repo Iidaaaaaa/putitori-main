@@ -12,3 +12,6 @@
 body {
   font-family: "Noto Sans JP", sans-serif;
 }
+select::-ms-expand {
+  display: none;
+}

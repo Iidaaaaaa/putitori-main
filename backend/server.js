@@ -24,4 +24,5 @@ app.get("/api/hotpepper", async (req, res) => {
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`サーバーがポート ${PORT} で起動中...`);
+  console.log(`http://localhost:${PORT}`);
 });
